@@ -4,6 +4,7 @@ const dataSchema = new mongoose.Schema({
   nameID: {
     required: true,
     type: String,
+    unique: true,
   },
   title: {
     required: true,
@@ -15,6 +16,10 @@ const dataSchema = new mongoose.Schema({
   },
   description: {
     required: false,
+    type: String,
+  },
+  imageType: {
+    required: true,
     type: String,
   },
 });
