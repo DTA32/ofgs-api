@@ -25,6 +25,15 @@ router.get("/data/get/:nameID", async (req, res) => {
   }
 });
 
+router.get("/data/getRandom", async (req, res) => {
+  try {
+    const data = await Game.aggregate([{ $sample: { size: 4 } }]);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/images/get/:nameID", async (req, res) => {
   try {
     const data = await Game.findOne({ nameID: req.params.nameID });

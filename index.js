@@ -6,6 +6,7 @@ const routes = require("./routes/routes");
 const adminAPI =
   process.env.NODE_ENV === "prod" ? process.env.ADMIN_API : "/admin";
 const adminRoutes = require("./routes/adminRoutes");
+const bodyParser = require("body-parser");
 
 mongoose.connect(mongoString);
 const db = mongoose.connection;
@@ -18,6 +19,8 @@ db.once("connected", () => {
 });
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api", routes);
 app.use("/api" + adminAPI, adminRoutes);
 
