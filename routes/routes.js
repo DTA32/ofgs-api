@@ -9,7 +9,11 @@ router.get("", (req, res) => {
 
 router.get("/data/get", async (req, res) => {
   try {
-    const data = await Game.find();
+    const page = req.query.page ? req.query.page : 0;
+    const limit = req.query.limit ? req.query.limit : 16;
+    const data = await Game.find()
+      .limit(parseInt(limit))
+      .skip(parseInt(page) * parseInt(limit));
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -27,7 +31,8 @@ router.get("/data/get/:nameID", async (req, res) => {
 
 router.get("/data/getRandom", async (req, res) => {
   try {
-    const data = await Game.aggregate([{ $sample: { size: 4 } }]);
+    const limit = req.query.limit ? req.query.limit : 4;
+    const data = await Game.aggregate([{ $sample: { size: parseInt(limit) } }]);
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
