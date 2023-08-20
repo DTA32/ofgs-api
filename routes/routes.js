@@ -50,6 +50,7 @@ router.get("/images/get/:nameID", async (req, res) => {
   }
 });
 
+/*
 router.get("/games/get/:nameID", async (req, res) => {
   try {
     res.sendFile("/games/" + req.params.nameID + ".swf", {
@@ -59,5 +60,6 @@ router.get("/games/get/:nameID", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+*/
 
 module.exports = router;
