@@ -9,18 +9,22 @@ const dataSchema = new mongoose.Schema({
   title: {
     required: true,
     type: String,
+    unique: false,
   },
   category: {
     required: true,
     type: String,
+    unique: false,
   },
   description: {
     required: false,
     type: String,
+    unique: false,
   },
   imageType: {
     required: true,
     type: String,
+    unique: false,
   },
 });
 

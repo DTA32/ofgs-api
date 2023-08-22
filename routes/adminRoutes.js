@@ -59,16 +59,19 @@ router.patch("/games/update/:nameID", async (req, res) => {
   try {
     const id = req.params.nameID;
     const updatedData = req.body;
-    const options = { new: true };
+    const options = { returnOriginal: false };
 
     const result = await Game.findOneAndUpdate(
       { nameID: id },
       updatedData,
       options
     );
-    res.send(id + " updated!");
+
+    res.status(200).json({
+      message: "API Server retrieved data and successfully updated!",
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "API Server error, " + error.message });
   }
 });
 

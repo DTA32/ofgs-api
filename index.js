@@ -4,8 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const mongoString = process.env.DATABASE_URL;
 const routes = require("./routes/routes");
-const adminAPI =
-  process.env.NODE_ENV === "prod" ? process.env.ADMIN_API : "/admin";
+const adminAPI = process.env.ADMIN_API;
 const adminRoutes = require("./routes/adminRoutes");
 const bodyParser = require("body-parser");
 
