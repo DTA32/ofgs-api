@@ -23,6 +23,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+const fs = require("fs");
+
 router.post(
   "/games/create",
   upload.fields([
@@ -46,9 +48,10 @@ router.post(
     try {
       data.imageType = req.files.image[0].mimetype.split("/")[1];
       const newData = await data.save();
-      res
-        .status(201)
-        .send("Game saved to server!, Name ID is " + newData.nameID);
+      res.status(201).json({
+        message: "Game saved to server!",
+        status: 201,
+      });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -78,7 +81,12 @@ router.patch("/games/update/:nameID", async (req, res) => {
 router.delete("/games/delete/:nameID", async (req, res) => {
   try {
     const nameID = req.params.nameID;
-    const data = await Game.findOneAndDelete({ nameID: nameID });
+    const data = await Game.findOne({ nameID: nameID });
+    fs.unlinkSync(
+      path.join(__dirname, "../public/images/" + nameID + "." + data.imageType)
+    );
+    fs.unlinkSync(path.join(__dirname, "../public/games/" + nameID + ".swf"));
+    await Game.deleteOne({ nameID: nameID });
     res.send("Game with name ID " + nameID + " deleted!");
   } catch (error) {
     res.status(500).json({ message: error.message });
