@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api", routes);
-app.use("/api" + adminAPI, adminRoutes);
+// app.use("/api" + adminAPI, adminRoutes);
 app.use("/api/games/get", express.static(__dirname + "/public/games"));
 
 app.listen(process.env.SERVER_PORT, () => {
