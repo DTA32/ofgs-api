@@ -13,7 +13,7 @@ const dataSchema = new mongoose.Schema({
   },
   category: {
     required: true,
-    type: String,
+    type: [String],
     unique: false,
   },
   description: {
@@ -24,6 +24,35 @@ const dataSchema = new mongoose.Schema({
   imageType: {
     required: true,
     type: String,
+    unique: false,
+  },
+  dimension: {
+    width: {
+      required: true,
+      type: Number,
+      unique: false,
+    },
+    height: {
+      required: true,
+      type: Number,
+      unique: false,
+    },
+  },
+  status: {
+    type: {
+      required: true,
+      type: Number,
+      unique: false,
+    },
+    name: {
+      required: true,
+      type: String,
+      unique: false,
+    },
+  },
+  type: {
+    required: true,
+    type: Number,
     unique: false,
   },
 });

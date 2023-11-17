@@ -13,7 +13,8 @@ router.get("/data/get", async (req, res) => {
     const limit = req.query.limit ? req.query.limit : 16;
     const data = await Game.find()
       .limit(parseInt(limit))
-      .skip(parseInt(page) * parseInt(limit));
+      .skip(parseInt(page) * parseInt(limit))
+      .sort({ title: 1 });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
