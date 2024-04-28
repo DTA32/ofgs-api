@@ -4,7 +4,7 @@ const router = express.Router();
 const Game = require("../models/game");
 
 router.get("", (req, res) => {
-  res.status(404).send("Specify the API!");
+  res.status(200).send("Hello from API! Please specify endpoint");
 });
 
 router.get("/data/get", async (req, res) => {
