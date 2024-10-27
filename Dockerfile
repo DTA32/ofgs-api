@@ -14,6 +14,3 @@ COPY . /app
 
 # Starting our application
 CMD [ "node", "index.js" ]
-
-# Exposing server port
-EXPOSE 3000

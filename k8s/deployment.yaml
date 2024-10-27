@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ofgs-api
+    labels:
+        app: ofgs-api
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ofgs-api
+    template:
+        metadata:
+            labels:
+                app: ofgs-api
+        spec:
+            containers:
+                - name: ofgs-api
+                  image: dta32/ofgs-api:latest
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                      - containerPort: 3000
+                  envFrom:
+                      - secretRef:
+                            name: ofgs-api-secret

@@ -10,7 +10,9 @@ Reference: [Learn](https://www.freecodecamp.org/news/build-a-restful-api-using-n
 
 ### Docker setup
 
-To setup docker image and run alongside with docker-compose in frontend
+For quick preview, image is available on docker hub and can be pulled by `docker pull dta32/ofgs-api:latest` then step 2, but it's based on main branch, so if there's code changes can do these
 
-1. Setup .env accordingly (`cp .env.example .env` and config, just use 3000 as SERVER_PORT)
-1. `docker build -t dfgs-api .`
+1. `docker build -t dta32/ofgs-api .`
+1. `docker run -d -p {externalPort}:{portDefinedOnServerPort} -e DATABASE_URL={mongoUrl} -e SERVER_PORT={port} -e API_PREFIX={/anythingorcanbeemptytoo} dta32/ofgs-api:latest`
+
+Simple deployment is also available by using docker compose on frontend repo
