@@ -16,7 +16,7 @@ spec:
         spec:
             containers:
                 - name: ofgs-api
-                  image: dta32/ofgs-api:latest
+                  image: replacedbycicd
                   imagePullPolicy: IfNotPresent
                   ports:
                       - containerPort: 3000
