@@ -40,6 +40,7 @@ router.get("/data/getRandom", async (req, res) => {
   }
 });
 
+/*
 router.get("/images/get/:nameID", async (req, res) => {
   try {
     const data = await Game.findOne({ nameID: req.params.nameID });
@@ -50,6 +51,7 @@ router.get("/images/get/:nameID", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+*/
 
 /*
 router.get("/games/get/:nameID", async (req, res) => {
