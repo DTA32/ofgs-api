@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(apiPrefix, routes);
 // app.use(apiPrefix + adminAPI, adminRoutes);
-app.use(apiPrefix + "/games/get", express.static(__dirname + "/public/games"));
+// app.use(apiPrefix + "/games/get", express.static(__dirname + "/public/games"));
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log("Server running on port " + process.env.SERVER_PORT);
