@@ -16,6 +16,20 @@ const dataSchema = new mongoose.Schema({
     type: [String],
     unique: false,
   },
+  developer: {
+    name: {
+      required: false,
+      type: String,
+      unique: false,
+      default: null,
+    },
+    link: {
+      required: false,
+      type: String,
+      unique: false,
+      default: null,
+    },
+  },
   description: {
     required: false,
     type: String,
@@ -40,21 +54,40 @@ const dataSchema = new mongoose.Schema({
   },
   status: {
     type: {
-      required: true,
+      required: false,
       type: Number,
       unique: false,
+      default: null,
     },
     name: {
-      required: true,
+      required: false,
       type: String,
       unique: false,
     },
+    description: {
+      required: false,
+      type: String,
+      unique: false,
+    }
   },
   type: {
-    required: true,
+    required: false,
     type: Number,
     unique: false,
+    default: 1,
   },
+  isPublic: {
+    required: false,
+    type: Boolean,
+    unique: false,
+    default: true,
+  },
+  priority: {
+    required: false,
+    type: Number,
+    unique: false,
+    default: 1,
+  }
 });
 
 module.exports = mongoose.model("game", dataSchema);
